@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">edayfashion</string>
+    <string name="edit_text_name_hint">Tên</string>
+    <string name="edit_text_email_hint">Email</string>
+    <string name="edit_text_password_hint">Mật khẩu</string>
+    <string name="edit_text_password_confirm_hint">Xác nhận mật khẩu</string>
+    <string name="button_create_account">Tạo tài khoản mới</string>
+    <string name="button_sign_in">Đăng nhập</string>
+    <string name="text_view_login">Đã có tài khoản? Đăng nhập</string>
+    <string name="text_view_create_account">Tạo tài khoản mới</string>
+    <string name="signing_in_message">Vui lòng đợi giây lát…</string>
+    <string name="sign_in_success_message">Đăng nhập thành công</string>
+</resources>
