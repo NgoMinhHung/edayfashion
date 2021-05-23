@@ -7,12 +7,15 @@
     android:clickable="true"
     android:background="?attr/selectableItemBackground"
     android:layout_gravity="center_horizontal"
-    android:padding="16dp">
+    android:padding="16dp"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="2">
+        android:weightSum="2"
+        android:id="@+id/idItem"
+        >
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

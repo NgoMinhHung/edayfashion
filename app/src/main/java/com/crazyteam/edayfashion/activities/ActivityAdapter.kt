@@ -9,6 +9,7 @@ class ActivityAdapter : RecyclerView.Adapter<ActivityViewHolder>(){
 
     private val activity = mutableListOf<Product>()
 
+    var onItemClick: ((Product) -> Unit) ? = null
     fun setActivity(input: MutableList<Product>){
         activity.clear()
         activity.addAll(input)
@@ -26,7 +27,9 @@ class ActivityAdapter : RecyclerView.Adapter<ActivityViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActivityViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_transaction, parent, false)
-        return ActivityViewHolder(view)
+        return ActivityViewHolder(view).also {
+            it.onClick = this.onItemClick
+        }
     }
 
 }
