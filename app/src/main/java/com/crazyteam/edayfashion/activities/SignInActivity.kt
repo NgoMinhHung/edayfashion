@@ -46,9 +46,9 @@ class SignInActivity : AppCompatActivity() {
             updateViews()
         }
 
-//        tvCreateAccount.setOnClickListener {
-//            startActivity(Intent(this, SignUpActivity::class.java))
-//        }
+        tvCreateAccount.setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
+        }
     }
 
     private fun doSignIn() {
