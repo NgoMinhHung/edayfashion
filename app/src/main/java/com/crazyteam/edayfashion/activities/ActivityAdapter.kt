@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.crazyteam.edayfashion.R
+import com.crazyteam.edayfashion.activities.Product
 
 class ActivityAdapter : RecyclerView.Adapter<ActivityViewHolder>(){
 

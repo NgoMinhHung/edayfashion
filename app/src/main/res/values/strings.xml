@@ -12,4 +12,16 @@
     <string name="sign_in_success_message">Đăng nhập thành công</string>
     <string name="sign_up_message">Vui lòng đợi giây lát…</string>
     <string name="created_account_success_message">Tạo tài khoản thành công</string>
+    <string name="app_bar_home">Trang chủ</string>
+    <string name="app_bar_favourous">Yêu thích</string>
+    <string name="app_bar_appreciate">Đánh giá cao</string>
+    <string name="profile">Thông tin cá nhân</string>
+    <string name="log_out">Đăng xuất</string>
+    <string name="log_out_success_message">Đăng xuất thành công</string>
+    <string name="text_view_gender">Giới tính</string>
+    <string name="text_view_phone">Số điện thoại</string>
+    <string name="text_view_address">Địa chỉ</string>
+    <string name="male">Nam</string>
+    <string name="female">Nữ</string>
+    <string name="load_user_profile_failed_message">Có lỗi khi lấy tài khoản người dùng</string>
 </resources>
