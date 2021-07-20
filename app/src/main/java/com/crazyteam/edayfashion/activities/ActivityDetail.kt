@@ -12,8 +12,8 @@ class ActivityDetail : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val id = intent.getIntExtra("ID", 0)
-        tvId.text = "id item = " + id.toString();
+//        val id = intent.getIntExtra("ID", 0)
+//        tvId.text = "id item = " + id.toString();
 
         setUpActionBar()
     }

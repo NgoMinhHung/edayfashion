@@ -68,8 +68,14 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.option_menu, menu)
         return true
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.item_cart -> {
+                Toast.makeText(this, "Đã chọn giỏ hàng", Toast.LENGTH_SHORT).show();
+                startActivity(Intent(this, CartActivity::class.java))
+                true
+            }
             R.id.item_log_out -> {
                 Toast.makeText(
                     this,

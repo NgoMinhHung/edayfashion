@@ -24,4 +24,12 @@
     <string name="male">Nam</string>
     <string name="female">Nữ</string>
     <string name="load_user_profile_failed_message">Có lỗi khi lấy tài khoản người dùng</string>
+    <string name="count">Số lượng</string>
+    <string name="button_add_cart">Thêm vào giỏ hàng</string>
+    <string name="detail_product">Chi tiết sản phẩm</string>
+    <string name="app_bar_cart">Giỏ hàng</string>
+    <string name="label_payment_method">Phương thức thanh toán</string>
+    <string name="label_atm">Chuyển khoản</string>
+    <string name="label_cash">Tiền mặt</string>
+    <string name="button_payment">Đặt hàng</string>
 </resources>
