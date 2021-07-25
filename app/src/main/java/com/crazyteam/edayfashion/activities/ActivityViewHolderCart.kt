@@ -3,7 +3,7 @@ package com.crazyteam.edayfashion.activities
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_transaction.*
+import kotlinx.android.synthetic.main.item_transaction_cart.*
 
 class ActivityViewHolderCart(override val containerView: View?) :
     RecyclerView.ViewHolder(containerView!!), LayoutContainer {
@@ -15,10 +15,10 @@ class ActivityViewHolderCart(override val containerView: View?) :
 
     fun display() {
         activity?.apply {
-            tvName.text = name
-            tvAmount.text = amount.toInt().toString()
-            tvPriceBuy.text = priceBuy.toInt().toString()
-            tvPriceSale.text = priceSale.toInt().toString()
+            tvNameCart.text = name
+            tvAmountCart.text = amount.toInt().toString()
+            tvPriceBuyCart.text = priceBuy.toInt().toString()
+            tvPriceSaleCart.text = priceSale.toInt().toString()
         }
     }
 

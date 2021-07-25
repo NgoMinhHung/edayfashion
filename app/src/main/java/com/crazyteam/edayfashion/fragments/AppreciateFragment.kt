@@ -35,6 +35,10 @@ class AppreciateFragment : Fragment() {
             it.onItemClick = {product ->
                 var intent = Intent(context!!, ActivityDetail::class.java)
                 intent.putExtra("ID", product.id)
+                intent.putExtra("Name", product.name)
+                intent.putExtra("Amount", product.amount)
+                intent.putExtra("PriceBuy", product.priceBuy)
+                intent.putExtra("PriceSale", product.priceSale)
                 startActivity(intent)
             }
         }

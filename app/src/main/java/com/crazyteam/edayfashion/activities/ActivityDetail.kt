@@ -12,7 +12,16 @@ class ActivityDetail : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-//        val id = intent.getIntExtra("ID", 0)
+        val id = intent.getIntExtra("ID", 0)
+        val name = intent.getStringExtra("Name")
+        val amount = intent.getIntExtra("Amount", 0)
+        val priceBuy = intent.getIntExtra("PriceBuy", 0)
+        val priceSale = intent.getIntExtra("PriceSale", 0)
+
+        tvName.text = name.toString()
+        tvAmount.text = amount.toString()
+        tvPriceBuy.text = priceBuy.toString()
+        tvPriceSale.text = priceSale.toString()
 //        tvId.text = "id item = " + id.toString();
 
         setUpActionBar()
