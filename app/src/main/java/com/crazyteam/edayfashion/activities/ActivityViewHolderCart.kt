@@ -19,6 +19,7 @@ class ActivityViewHolderCart(override val containerView: View?) :
             tvAmountCart.text = amount.toInt().toString()
             tvPriceBuyCart.text = priceBuy.toInt().toString()
             tvPriceSaleCart.text = priceSale.toInt().toString()
+            edtCountCart.setText("1")
         }
     }
 
