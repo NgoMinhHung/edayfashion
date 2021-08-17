@@ -3,8 +3,8 @@ package com.crazyteam.edayfashion.models
 import com.google.gson.annotations.SerializedName
 
 class SignUpParams (
-    @SerializedName("name")
-    val name: String,
+    @SerializedName("username")
+    val username: String,
     @SerializedName("email")
     val email: String,
     @SerializedName("password")

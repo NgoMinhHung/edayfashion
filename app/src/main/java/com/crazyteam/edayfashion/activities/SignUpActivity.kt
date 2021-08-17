@@ -72,7 +72,7 @@ class SignUpActivity : AppCompatActivity () {
     private fun doSignUp() {
         doIfValid { name, email, password, confirmPassword ->
             val signUpParams = SignUpParams(
-                name = name,
+                username = name,
                 email = email,
                 password = password,
                 confirmPassword = confirmPassword
