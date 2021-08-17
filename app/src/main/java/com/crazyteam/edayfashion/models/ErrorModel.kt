@@ -1,7 +1,6 @@
 package com.crazyteam.edayfashion.models
 
-data class SignUpResponse(
+data class ErrorModel(
     val code: Int?,
-    val data: SignUpData,
     val message: String?
 )

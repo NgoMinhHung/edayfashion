@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.crazyteam.edayfashion.R
 import com.crazyteam.edayfashion.models.SignUpParams
 import com.crazyteam.edayfashion.models.SignUpResponse
+import com.crazyteam.edayfashion.services.ApiService
+import com.crazyteam.edayfashion.services.implementations.AuthService
 import com.crazyteam.edayfashion.utils.isNotNullOrEmpty
 import com.crazyteam.edayfashion.widgets.LoadingDialog
 import kotlinx.android.synthetic.main.activity_sign_up.*
@@ -78,13 +80,13 @@ class SignUpActivity : AppCompatActivity () {
 
             loadingDialog.show()
 
-//            val observable = AuthService.signUp(signUpParams)
-//
-//            ApiService.call(
-//                observable = observable,
-//                onSuccess = this@SignUpActivity::onSignUpSuccess,
-//                onError = this@SignUpActivity::onSignUpFailed
-//            )
+            val observable = AuthService.signUp(signUpParams)
+
+            ApiService.call(
+                observable = observable,
+                onSuccess = this@SignUpActivity::onSignUpSuccess,
+                onError = this@SignUpActivity::onSignUpFailed
+            )
         }
     }
 
