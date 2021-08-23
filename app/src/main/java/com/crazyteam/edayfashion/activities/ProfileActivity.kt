@@ -18,7 +18,7 @@ import org.jetbrains.anko.toast
 class ProfileActivity : AppCompatActivity() {
 
     private var user: User? = null
-    private val defaultImageUrl = "https://scontent-hkg4-1.xx.fbcdn.net/v/t1.18169-1/p160x160/23795862_940775862736131_6197913585812136520_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=7206a8&_nc_ohc=neUEPbO8UTAAX98GwGN&_nc_ht=scontent-hkg4-1.xx&oh=345a45c2b857e702f89aa5b956c394d1&oe=60F992CF"
+    private val defaultImageUrl = "https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +29,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun getUserProfile() {
 //        display(User(1, "Thanh", "Nguyễn Lương Bằng", false,"0985088304",""))
-        val observable = UserService.getUser(this)
+        val observable = UserService.getUser()
 //        showLoading()
         ApiService.call(
             observable = observable,
@@ -65,6 +65,7 @@ class ProfileActivity : AppCompatActivity() {
         tvPhone.text =  user.phone
         tvAddress.text = user.addr
         Glide.with(this).load(user.imageUrl ?: defaultImageUrl).into(imgAvatar)
+        toast("Lấy thông tin thành công")
     }
 
     private fun onGetUserSuccess(getUserResponse: GetUserResponse) {

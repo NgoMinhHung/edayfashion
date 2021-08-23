@@ -27,4 +27,10 @@ object TransactionService {
         .addCartTransaction(addCartTransactionParams)
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())!!
+
+    fun getListCartTransaction() = ApiClient
+        .createService(ITransactionService::class.java)!!
+        .getOrderListCartTransaction()
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeOn(Schedulers.io())!!
 }

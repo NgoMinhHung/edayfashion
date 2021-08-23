@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.crazyteam.edayfashion.R
 import com.crazyteam.edayfashion.models.*
 import com.crazyteam.edayfashion.services.ApiService
@@ -16,6 +17,7 @@ class ActivityDetail : AppCompatActivity() {
 
     private var transaction: Transaction? = null
     private var dataAddCartTransaction: AddCartData? = null
+    val defaultImageUrl = "https://canifa.com/blog/wp-content/uploads/2017/03/xan-ao-so-mi2.jpg"
     private var proId: Int? = null
     private var amount: Int? = null
 
@@ -65,10 +67,12 @@ class ActivityDetail : AppCompatActivity() {
     private fun display(transaction: Transaction) {
         var count = 1
 
-        tvName.text = transaction.name.toString()
+        Glide.with(this).load(transaction.imageUrl ?: defaultImageUrl).into(imgProduct)
         tvAmount.text = transaction.amount.toString()
         tvPriceBuy.text = transaction.price_buy.toString()
         tvPriceSale.text = transaction.price_sell.toString()
+        tvName.text = transaction.name
+        tvTotalPrice.text = (transaction.price_sell * transaction.amount).toString()
         edtCount.setText("1")
 
         toast("Lấy dữ liệu sản phảm thành công")

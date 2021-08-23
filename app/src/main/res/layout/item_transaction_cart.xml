@@ -23,13 +23,19 @@
             android:layout_marginBottom="150dp"
             android:layout_marginEnd="14dp"
             />
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/logo">
-        </ImageView>
-        <LinearLayout
+<!--        <ImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:src="@drawable/logo">-->
+<!--        </ImageView>-->
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgProduct"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerCrop" />
+            <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -46,14 +52,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Amount:">
+                    android:text="Số lượng:">
                 </TextView>
                 <TextView
                     android:id="@+id/tvAmountCart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="10000">
+                    android:text="">
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -66,36 +72,36 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Price buy:">
+                    android:text="Đơn giá:">
                 </TextView>
                 <TextView
                     android:id="@+id/tvPriceBuyCart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="10000">
+                    android:text="">
                 </TextView>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                android:layout_marginTop="@dimen/normal_text_size">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Price sale:">
-                </TextView>
-                <TextView
-                    android:id="@+id/tvPriceSaleCart"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="10000">
-                </TextView>
-            </LinearLayout>
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:weightSum="2"-->
+<!--                android:layout_marginTop="@dimen/normal_text_size">-->
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="Price sale:">-->
+<!--                </TextView>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/tvPriceSaleCart"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="10000">-->
+<!--                </TextView>-->
+<!--            </LinearLayout>-->
             <TextView
                 android:id="@+id/tvNameCart"
                 android:layout_width="match_parent"
@@ -104,23 +110,23 @@
                 android:text="Tên sản phẩm">
             </TextView>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvSource"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingEnd="14dp"
-                android:text="@string/count"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/small_text_size"
-                android:layout_marginTop="@dimen/normal_text_size"
-                />
-            <com.crazyteam.edayfashion.widgets.HasTextChangedActionEditText
-                android:id="@+id/edtCountCart"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/count"
-                android:inputType="numberDecimal"
-                android:textSize="@dimen/normal_text_size" />
+<!--            <androidx.appcompat.widget.AppCompatTextView-->
+<!--                android:id="@+id/tvSource"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:paddingEnd="14dp"-->
+<!--                android:text="@string/count"-->
+<!--                android:textColor="@color/colorPrimary"-->
+<!--                android:textSize="@dimen/small_text_size"-->
+<!--                android:layout_marginTop="@dimen/normal_text_size"-->
+<!--                />-->
+<!--            <com.crazyteam.edayfashion.widgets.HasTextChangedActionEditText-->
+<!--                android:id="@+id/edtCountCart"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="@string/count"-->
+<!--                android:inputType="numberDecimal"-->
+<!--                android:textSize="@dimen/normal_text_size" />-->
         </LinearLayout>
     </LinearLayout>
     <View

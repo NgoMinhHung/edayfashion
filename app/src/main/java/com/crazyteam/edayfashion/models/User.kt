@@ -9,10 +9,8 @@ data class User(
     val password: String,
     val sex: Boolean = false,
     val name: String?,
-    @SerializedName("image_url")
-    val imageUrl: String?,
     @SerializedName("facebook_url")
-    val facebook_url: String?,
+    val imageUrl: String?,
     val role: String?,
     val birthDay: String?,
     val addr: String?,

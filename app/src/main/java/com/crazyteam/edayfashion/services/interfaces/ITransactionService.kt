@@ -1,9 +1,6 @@
 package com.crazyteam.edayfashion.services.interfaces
 
-import com.crazyteam.edayfashion.models.AddCartTransactionParams
-import com.crazyteam.edayfashion.models.AddCartTransactionResponse
-import com.crazyteam.edayfashion.models.GetTransactionDetailResponse
-import com.crazyteam.edayfashion.models.GetTransactionsResponse
+import com.crazyteam.edayfashion.models.*
 import io.reactivex.Observable
 import okhttp3.ResponseBody
 import retrofit2.Response
@@ -14,6 +11,9 @@ interface ITransactionService {
 
     @POST("/eday/order/addCart")
     fun addCartTransaction(@Body addCartTransactionParams: AddCartTransactionParams): Observable<Response<AddCartTransactionResponse>>
+
+    @GET("/eday/order/addCart")
+    fun getOrderListCartTransaction(): Observable<Response<GetOrderListCartTransactionResponse>>
 
     @GET("/product/{transaction_id}/detail")
     fun getTransactionDetail(@Path("transaction_id") transactionId: Int): Observable<Response<GetTransactionDetailResponse>>

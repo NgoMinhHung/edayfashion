@@ -35,4 +35,5 @@
     <string name="button_payment">Đặt hàng</string>
     <string name="add_cart_success_message">Thêm vào giỏ hàng thành công</string>
     <string name="add_cart_failed_message">Lỗi thêm vào giỏ hàng</string>
+    <string name="totalPrice">Tổng tiền</string>
 </resources>

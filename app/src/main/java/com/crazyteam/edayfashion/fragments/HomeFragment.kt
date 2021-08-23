@@ -9,12 +9,12 @@ import androidx.fragment.app.Fragment
 import com.crazyteam.edayfashion.R
 import com.crazyteam.edayfashion.activities.ActivityDetail
 import com.crazyteam.edayfashion.activities.TransactionAdapter
-import com.crazyteam.edayfashion.activities.Product
 import com.crazyteam.edayfashion.models.GetTransactionsResponse
 import com.crazyteam.edayfashion.models.Transaction
 import com.crazyteam.edayfashion.services.ApiService
 import com.crazyteam.edayfashion.services.implementations.TransactionService
 import kotlinx.android.synthetic.main.activity_transaction.*
+import org.jetbrains.anko.toast
 
 class HomeFragment : Fragment() {
 

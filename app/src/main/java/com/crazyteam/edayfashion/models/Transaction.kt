@@ -1,5 +1,6 @@
 package com.crazyteam.edayfashion.models
 
+import com.google.gson.annotations.SerializedName
 import java.util.Date
 
 data class Transaction(
@@ -11,7 +12,8 @@ data class Transaction(
     val price_sell: Float,
     val catId: Int,
     val inputDay: Date?,
-    val image: String?,
+    @SerializedName("image")
+    val imageUrl: String?,
     val media: String?,
     val amount_sell: Float
 )

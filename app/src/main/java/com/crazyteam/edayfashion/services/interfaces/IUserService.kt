@@ -8,7 +8,7 @@ import retrofit2.http.*
 interface IUserService {
 
     @GET("/eday/auth/me")
-    fun getUser(@Header("Authorization") token: String): Observable<Response<GetUserResponse>>
+    fun getUser(): Observable<Response<GetUserResponse>>
 //
 //    @PUT("/api/users/me")
 //    fun updateUser(@Header("Authorization") token: String, @Body updateUserParams: UpdateUserParams): Observable<Response<UpdateUserResponse>>

@@ -1,13 +1,9 @@
 package com.crazyteam.edayfashion.models
 
-import com.google.gson.annotations.SerializedName
 import java.util.Date
 
-data class AddCartData(
+data class ListOrderData(
     val id: Int,
-    val name: String?,
-    @SerializedName("image")
-    val imageUrl: String?,
     val user_id: Int,
     val proId: Int,
     val amount: Int,
