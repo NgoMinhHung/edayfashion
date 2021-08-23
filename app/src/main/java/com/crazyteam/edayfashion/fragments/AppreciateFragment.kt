@@ -7,13 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.crazyteam.edayfashion.R
-import com.crazyteam.edayfashion.activities.ActivityAdapter
+import com.crazyteam.edayfashion.activities.TransactionAdapter
 import com.crazyteam.edayfashion.activities.ActivityDetail
 import com.crazyteam.edayfashion.activities.Product
+import com.crazyteam.edayfashion.models.GetTransactionsResponse
+import com.crazyteam.edayfashion.models.Transaction
+import com.crazyteam.edayfashion.services.ApiService
+import com.crazyteam.edayfashion.services.implementations.TransactionService
 import kotlinx.android.synthetic.main.activity_transaction.*
-import java.util.*
 
 class AppreciateFragment : Fragment() {
+
+    lateinit var adapter: TransactionAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,25 +31,37 @@ class AppreciateFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val activity = mutableListOf(
-            Product(0,"Áo dài", 140000, 150000, 90000),
-            Product(1,"Áo tứ thân", 120000, 130000, 80000),
-            Product(2,"Áo bà ba", 100000, 120000, 70000)
-        )
-        val adater = ActivityAdapter().also {
+        adapter = TransactionAdapter().also {
             it.onItemClick = {product ->
                 var intent = Intent(context!!, ActivityDetail::class.java)
                 intent.putExtra("ID", product.id)
-                intent.putExtra("Name", product.name)
-                intent.putExtra("Amount", product.amount)
-                intent.putExtra("PriceBuy", product.priceBuy)
-                intent.putExtra("PriceSale", product.priceSale)
                 startActivity(intent)
             }
         }
-        rvTransactions.adapter = adater
-        adater.setActivity(activity)
+        rvTransactions.adapter = adapter
 
+        getTransactions()
+
+    }
+    private fun getTransactions() {
+//        showLoading()
+        val observable =
+            TransactionService.getTransactions()
+        ApiService.call(
+            observable = observable,
+            onSuccess = ::onGetTransactionsSuccess,
+            onError = ::onError
+        )
+    }
+    private fun onGetTransactionsSuccess(getTransactionsResponse: GetTransactionsResponse) {
+        displayTransactions(getTransactionsResponse.data)
+//        hideLoading()
+    }
+    private fun displayTransactions(transactions: MutableList<Transaction>) {
+        adapter.setTransactions(transactions)
+    }
+    private fun onError(string: String?) {
+//        hideLoading()
     }
 
 }

@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.crazyteam.edayfashion.R
 import com.crazyteam.edayfashion.fragments.HomeFragment
+import com.crazyteam.edayfashion.utils.deleteAuthInformation
 import com.minhhung.life_app.fragments.AppreciateFragment
 import com.minhhung.life_app.fragments.FavourousFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -93,7 +94,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun doLogout() {
-//        deleteAuthInformation()
+        deleteAuthInformation()
         startActivity(Intent(this, SignInActivity::class.java))
         finish()
     }

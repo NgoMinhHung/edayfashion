@@ -5,35 +5,75 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.crazyteam.edayfashion.R
+import com.crazyteam.edayfashion.models.*
+import com.crazyteam.edayfashion.services.ApiService
+import com.crazyteam.edayfashion.services.implementations.TransactionService
+import com.crazyteam.edayfashion.utils.isNotNullOrEmpty
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.jetbrains.anko.toast
 
 class ActivityDetail : AppCompatActivity() {
 
-
+    private var transaction: Transaction? = null
+    private var dataAddCartTransaction: AddCartData? = null
+    private var proId: Int? = null
+    private var amount: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
         val id = intent.getIntExtra("ID", 0)
-        val name = intent.getStringExtra("Name")
-        val amount = intent.getIntExtra("Amount", 0)
-        val priceBuy = intent.getIntExtra("PriceBuy", 0)
-        val priceSale = intent.getIntExtra("PriceSale", 0)
-        var count = 1
+        proId = id
 
-        tvName.text = name.toString()
-        tvAmount.text = amount.toString()
-        tvPriceBuy.text = priceBuy.toString()
-        tvPriceSale.text = priceSale.toString()
-        edtCount.setText("1")
+        init(id)
+    }
 
+    private fun init(id: Int) {
+        getTransactionDetail(id)   // call api get transaction
+
+        setUpActionBar()
+
+        edtCount.onTextChanged {
+            amount = it.toInt()
+
+            updateAmount()
+        }
         btnAddCart.setOnClickListener {
             doAddCart()
         }
-        setUpActionBar()
     }
+
+    private fun getTransactionDetail(id: Int) {
+
+        val observable = TransactionService.getTransactionDetail(id)
+
+        ApiService.call(
+            observable = observable,
+            onSuccess = this@ActivityDetail::onGetTransactionSuccess,
+            onError = this@ActivityDetail::onGetTransactionFailed
+        )
+    }
+
+    private fun onGetTransactionSuccess(getTransactionDetailResponse: GetTransactionDetailResponse) {
+        transaction = getTransactionDetailResponse.data
+        if(getTransactionDetailResponse.data != null) display(getTransactionDetailResponse.data)
+    }
+    private fun onGetTransactionFailed(message: String?) {
+        toast(getString(R.string.load_transaction_detail_failed_message))
+    }
+    private fun display(transaction: Transaction) {
+        var count = 1
+
+        tvName.text = transaction.name.toString()
+        tvAmount.text = transaction.amount.toString()
+        tvPriceBuy.text = transaction.price_buy.toString()
+        tvPriceSale.text = transaction.price_sell.toString()
+        edtCount.setText("1")
+
+        toast("Lấy dữ liệu sản phảm thành công")
+    }
+
     private fun setUpActionBar() {
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
@@ -48,8 +88,35 @@ class ActivityDetail : AppCompatActivity() {
     }
 
     private fun doAddCart() {
+        val addCartTransactionParams = AddCartTransactionParams(
+            proId = proId!!,
+            amount = amount!!
+        )
+        AddCartTransaction(addCartTransactionParams)
+//        Toast.makeText(this, "Thêm vào giỏ hàng thành công", Toast.LENGTH_SHORT).show();
+    }
+
+    private fun AddCartTransaction(addCartTransactionParams: AddCartTransactionParams) {
+
+        val observable = TransactionService.addCartTransaction(addCartTransactionParams)
+
+        ApiService.call(
+            observable = observable,
+            onSuccess = this@ActivityDetail::AddCartTransactionSuccess,
+            onError = this@ActivityDetail::AddCartTransactionFailed
+        )
+    }
+    private fun AddCartTransactionSuccess(addCartTransactionResponse: AddCartTransactionResponse) {
+        dataAddCartTransaction = addCartTransactionResponse.data
+        toast(getString(R.string.add_cart_success_message))
         var intent = Intent(this, MainActivity::class.java)
-        Toast.makeText(this, "Thêm vào giỏ hàng thành công", Toast.LENGTH_SHORT).show();
         startActivity(intent)
+    }
+    private fun AddCartTransactionFailed(message: String?) {
+        toast(getString(R.string.add_cart_failed_message))
+    }
+
+    private fun updateAmount() {
+        btnAddCart.isEnabled = amount.toString().isNotNullOrEmpty() && proId.toString().isNotNullOrEmpty()
     }
 }

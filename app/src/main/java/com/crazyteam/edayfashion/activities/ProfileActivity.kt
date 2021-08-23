@@ -1,11 +1,17 @@
 package com.crazyteam.edayfashion.activities
 
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.crazyteam.edayfashion.R
+import com.crazyteam.edayfashion.models.GetUserResponse
 import com.crazyteam.edayfashion.models.User
+import com.crazyteam.edayfashion.services.ApiService
+import com.crazyteam.edayfashion.services.implementations.UserService
+import com.crazyteam.edayfashion.utils.Constants.IntentKeys
 import kotlinx.android.synthetic.main.activity_profile.*
 import org.jetbrains.anko.toast
 
@@ -22,14 +28,14 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun getUserProfile() {
-        display(User(1, "Thanh", "Nguyễn Lương Bằng", false,"0985088304",""))
-//        val observable = UserService.getUser(this)
+//        display(User(1, "Thanh", "Nguyễn Lương Bằng", false,"0985088304",""))
+        val observable = UserService.getUser(this)
 //        showLoading()
-//        ApiService.call(
-//            observable = observable,
-//            onSuccess = this@ProfileActivity::onGetUserSuccess,
-//            onError = this@ProfileActivity::onGetUserFailed
-//        )
+        ApiService.call(
+            observable = observable,
+            onSuccess = this@ProfileActivity::onGetUserSuccess,
+            onError = this@ProfileActivity::onGetUserFailed
+        )
     }
 
     private fun setUpActionBar() {
@@ -38,6 +44,7 @@ class ProfileActivity : AppCompatActivity() {
             setHomeButtonEnabled(true)
         }
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
@@ -53,19 +60,29 @@ class ProfileActivity : AppCompatActivity() {
 
 
     private fun display(user: User) {
-        tvName.text =   user.name
-        tvGender.text =  getString(if (user.gender) R.string.male else R.string.female)
+        tvName.text =   user.username
+        tvGender.text =  getString(if (user.sex) R.string.male else R.string.female)
         tvPhone.text =  user.phone
-        tvAddress.text = user.address
+        tvAddress.text = user.addr
         Glide.with(this).load(user.imageUrl ?: defaultImageUrl).into(imgAvatar)
     }
 
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//
-//        if (requestCode == IntentKeys.UpdateUserFlag && resultCode == Activity.RESULT_OK) {
-//            getUserProfile()
-//        }
-//    }
+    private fun onGetUserSuccess(getUserResponse: GetUserResponse) {
+//        hideLoading()
+        user = getUserResponse.data
+        if(getUserResponse.data != null) display(getUserResponse.data)
+    }
+    private fun onGetUserFailed(message: String?) {
+//        hideLoading()
+        toast(getString(R.string.load_user_profile_failed_message))
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == IntentKeys.UpdateUserFlag && resultCode == Activity.RESULT_OK) {
+            getUserProfile()
+        }
+    }
 
 }

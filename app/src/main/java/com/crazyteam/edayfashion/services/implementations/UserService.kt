@@ -8,11 +8,11 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 object UserService {
-//    fun getUser(context: Context) = ApiClient
-//        .createService(IUserService::class.java)!!
-//        .getUser(context.getToken()!!)
-//        .observeOn(AndroidSchedulers.mainThread())
-//        .subscribeOn(Schedulers.io())!!
+    fun getUser(context: Context) = ApiClient
+        .createService(IUserService::class.java)!!
+        .getUser(context.getToken()!!)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeOn(Schedulers.io())!!
 
 //    fun updateUser(context: Context, updateUserParams: UpdateUserParams) = ApiClient
 //        .createService(IUserService::class.java)!!

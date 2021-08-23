@@ -7,8 +7,8 @@ import com.crazyteam.edayfashion.utils.Constants.PreferenceKeys
 
 fun Context.saveAuthInformation(signInResponse: SignInResponse) {
     authPreferences().edit().apply {
-        putString(PreferenceKeys.Token, signInResponse.data.token)
-        putInt(PreferenceKeys.UserId, signInResponse.data.user.id)
+        putString(PreferenceKeys.Token, signInResponse.data?.token)
+//        putInt(PreferenceKeys.UserId, signInResponse.data.user.id)
         apply()
     }
 }
@@ -16,7 +16,7 @@ fun Context.saveAuthInformation(signInResponse: SignInResponse) {
 fun Context.deleteAuthInformation() {
     authPreferences().edit().apply() {
         remove(PreferenceKeys.Token)
-        remove(PreferenceKeys.UserId)
+//        remove(PreferenceKeys.UserId)
         apply()
     }
 }
