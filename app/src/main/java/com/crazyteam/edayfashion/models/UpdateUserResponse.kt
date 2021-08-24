@@ -1,6 +1,6 @@
 package com.crazyteam.edayfashion.models
 
-data class GetUserResponse(
+data class UpdateUserResponse(
     val errormessage: String?,
-    val data: User?
+    val data: User
 )

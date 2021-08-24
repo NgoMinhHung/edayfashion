@@ -4,6 +4,8 @@ package com.crazyteam.edayfashion.activities
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.crazyteam.edayfashion.R
@@ -30,7 +32,7 @@ class ProfileActivity : AppCompatActivity() {
     private fun getUserProfile() {
 //        display(User(1, "Thanh", "Nguyễn Lương Bằng", false,"0985088304",""))
         val observable = UserService.getUser()
-//        showLoading()
+
         ApiService.call(
             observable = observable,
             onSuccess = this@ProfileActivity::onGetUserSuccess,
@@ -58,10 +60,36 @@ class ProfileActivity : AppCompatActivity() {
         setUpActionBar()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.user_profile_options_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_edit_profile -> {
+                user?.apply {
+                    val intent =
+                        Intent(this@ProfileActivity, EditProfileActivity::class.java).apply {
+                            putExtra(IntentKeys.UserName, username)
+                            putExtra(IntentKeys.UserGender, sex)
+                            putExtra(IntentKeys.UserPhoneNumber, phone)
+                            putExtra(IntentKeys.UserImageUrl, imageUrl)
+                            putExtra(IntentKeys.UserAddress, addr)
+                        }
+                    startActivityForResult(intent, IntentKeys.UpdateUserFlag)
+//                    startActivity(intent)
+                }
+//                var intent = Intent(this, EditProfileActivity::class.java)
+//                startActivity(intent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     private fun display(user: User) {
-        tvName.text =   user.username
-        tvGender.text =  getString(if (user.sex) R.string.male else R.string.female)
+        tvName.text = user.username
+        tvGender.text = getString(if (user.sex) R.string.male else R.string.female)
         tvPhone.text =  user.phone
         tvAddress.text = user.addr
         Glide.with(this).load(user.imageUrl ?: defaultImageUrl).into(imgAvatar)
@@ -69,21 +97,17 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun onGetUserSuccess(getUserResponse: GetUserResponse) {
-//        hideLoading()
         user = getUserResponse.data
         if(getUserResponse.data != null) display(getUserResponse.data)
     }
     private fun onGetUserFailed(message: String?) {
-//        hideLoading()
         toast(getString(R.string.load_user_profile_failed_message))
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == IntentKeys.UpdateUserFlag && resultCode == Activity.RESULT_OK) {
             getUserProfile()
-        }
     }
 
 }

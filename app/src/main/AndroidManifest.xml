@@ -17,19 +17,22 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".activities.SignInActivity">
-
-        </activity>
-        <activity android:name=".activities.SignUpActivity">
-
-        </activity>
-        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.SignUpActivity">
+
+        </activity>
+        <activity android:name=".activities.MainActivity">
+
+        </activity>
         <activity android:name=".activities.ProfileActivity">
+
+        </activity>
+        <activity android:name=".activities.EditProfileActivity">
 
         </activity>
         <activity android:name=".activities.ActivityDetail">

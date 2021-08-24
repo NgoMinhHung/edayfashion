@@ -19,7 +19,7 @@ class ActivityDetail : AppCompatActivity() {
     private var dataAddCartTransaction: AddCartData? = null
     val defaultImageUrl = "https://canifa.com/blog/wp-content/uploads/2017/03/xan-ao-so-mi2.jpg"
     private var proId: Int? = null
-    private var amount: Int? = null
+    private var amount: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,14 +36,19 @@ class ActivityDetail : AppCompatActivity() {
 
         setUpActionBar()
 
-        edtCount.onTextChanged {
-            amount = it.toInt()
-
-            updateAmount()
-        }
         btnAddCart.setOnClickListener {
             doAddCart()
         }
+
+        edtCount.onTextChanged {
+            amount = it.toInt()
+
+            if(it != null && transaction != null){
+                tvTotalPrice.text = (transaction!!.price_buy * amount).toString()
+            }
+//            updateAmount()
+        }
+
     }
 
     private fun getTransactionDetail(id: Int) {
@@ -72,7 +77,7 @@ class ActivityDetail : AppCompatActivity() {
         tvPriceBuy.text = transaction.price_buy.toString()
         tvPriceSale.text = transaction.price_sell.toString()
         tvName.text = transaction.name
-        tvTotalPrice.text = (transaction.price_sell * transaction.amount).toString()
+        tvTotalPrice.text = (transaction.price_buy * amount).toString()
         edtCount.setText("1")
 
         toast("Lấy dữ liệu sản phảm thành công")
@@ -121,6 +126,6 @@ class ActivityDetail : AppCompatActivity() {
     }
 
     private fun updateAmount() {
-        btnAddCart.isEnabled = amount.toString().isNotNullOrEmpty() && proId.toString().isNotNullOrEmpty()
+        btnAddCart.isEnabled = !amount.toString().isNotNullOrEmpty() && !proId.toString().isNotNullOrEmpty()
     }
 }

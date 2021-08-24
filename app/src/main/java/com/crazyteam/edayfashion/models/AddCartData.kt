@@ -5,15 +5,10 @@ import java.util.Date
 
 data class AddCartData(
     val id: Int,
-    val name: String?,
-    @SerializedName("image")
-    val imageUrl: String?,
-    val user_id: Int,
+    val product: Transaction,
     val proId: Int,
     val amount: Int,
     val price: Float,
-    val createDay: Date?,
-    val updateDay: Date?,
-    val buyDay: Date?,
-    val state: Int
+    val addDay: Date?,
+    val status: String
 )

@@ -36,4 +36,10 @@
     <string name="add_cart_success_message">Thêm vào giỏ hàng thành công</string>
     <string name="add_cart_failed_message">Lỗi thêm vào giỏ hàng</string>
     <string name="totalPrice">Tổng tiền</string>
+    <string name="edit_text_name">Nhập tên</string>
+    <string name="edit_text_address">Nhập địa chỉ</string>
+    <string name="edit_text_phone">Nhập số điện thoại</string>
+    <string name="button_cancel">Hủy</string>
+    <string name="button_OK">Xác nhận</string>
+    <string name="menu_item_edit_profile">Chỉnh sửa thông tin cá nhân</string>
 </resources>

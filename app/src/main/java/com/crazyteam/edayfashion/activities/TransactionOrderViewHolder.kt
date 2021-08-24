@@ -21,8 +21,8 @@ class TransactionOrderViewHolder(override val containerView: View?) :
         activity?.apply {
             tvAmountCart.text = amount.toInt().toString()
             tvPriceBuyCart.text = price.toInt().toString()
-            tvNameCart.text = if(name.isNotNullOrEmpty()) name else "No name"
-            Glide.with(containerView!!).load(imageUrl ?: defaultImageUrl).into(imgProduct)
+            tvNameCart.text = if(activity!!.product.name.isNotNullOrEmpty()) activity!!.product.name else "No name"
+            Glide.with(containerView!!).load(activity!!.product.imageUrl ?: defaultImageUrl).into(imgProduct)
 //            edtCountCart.setText("1")
         }
     }

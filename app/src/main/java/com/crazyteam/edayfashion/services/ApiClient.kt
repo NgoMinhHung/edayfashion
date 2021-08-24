@@ -11,7 +11,7 @@ object ApiClient {
     private var retrofit : Retrofit? = null
 
     private val builder = Retrofit.Builder()
-        .baseUrl("https://lazy-life-api.herokuapp.com/")  //url api
+        .baseUrl("https://8fd8-117-2-120-33.ngrok.io")  //url api
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create()))
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
 

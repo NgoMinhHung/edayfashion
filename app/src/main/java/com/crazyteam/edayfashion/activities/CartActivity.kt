@@ -14,7 +14,9 @@ import org.jetbrains.anko.toast
 
 class CartActivity : AppCompatActivity() {
 
-    lateinit var adapter: TransactionOrderAdapter
+//    lateinit var adapter: TransactionOrderAdapter
+
+    private val adapter = TransactionOrderAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,9 +24,14 @@ class CartActivity : AppCompatActivity() {
 
         setUpActionBar()
 
+
+//        val transactions = mutableListOf(
+//            AddCartData(1,"BC","",1,1,2,20000f,null,null,null,0)
+//        )
+
         rvTransactionsCart.adapter = adapter
         rvTransactionsCart.layoutManager = LinearLayoutManager(this)
-
+//        adapter.setTransactionOrder(transactions)
 
         getTransactionsOrder()
 
@@ -36,7 +43,6 @@ class CartActivity : AppCompatActivity() {
     }
 
     private fun getTransactionsOrder() {
-//        showLoading()
         val observable =
             TransactionService.getListCartTransaction()
         ApiService.call(
@@ -47,15 +53,13 @@ class CartActivity : AppCompatActivity() {
     }
 
     private fun onGetTransactionsSuccess(getTransactionsResponse: GetOrderListCartTransactionResponse) {
-        displayTransactions(getTransactionsResponse.data)
-//        hideLoading()
+        displayTransactions(getTransactionsResponse.data.listOrder)
     }
     private fun displayTransactions(transactions: MutableList<AddCartData>) {
         adapter.setTransactionOrder(transactions)
         toast("Lấy dữ liệu danh sách sản phảm thành công")
     }
     private fun onError(string: String?) {
-//        hideLoading()
         toast("Lấy dữ liệu danh sách sản phảm lỗi")
     }
 

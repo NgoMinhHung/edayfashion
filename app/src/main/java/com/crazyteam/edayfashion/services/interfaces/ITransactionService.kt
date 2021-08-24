@@ -12,10 +12,10 @@ interface ITransactionService {
     @POST("/eday/order/addCart")
     fun addCartTransaction(@Body addCartTransactionParams: AddCartTransactionParams): Observable<Response<AddCartTransactionResponse>>
 
-    @GET("/eday/order/addCart")
-    fun getOrderListCartTransaction(): Observable<Response<GetOrderListCartTransactionResponse>>
+    @GET("eday/order/getCartByUser")
+    fun getOrderListCartTransaction(@Header("Cookie") cookie: String): Observable<Response<GetOrderListCartTransactionResponse>>
 
-    @GET("/product/{transaction_id}/detail")
+    @GET("/eday/product/{transaction_id}/detail")
     fun getTransactionDetail(@Path("transaction_id") transactionId: Int): Observable<Response<GetTransactionDetailResponse>>
 
     @GET("/eday/product/list")
