@@ -77,7 +77,7 @@ class ActivityDetail : AppCompatActivity() {
         tvPriceBuy.text = transaction.price_buy.toString()
         tvPriceSale.text = transaction.price_sell.toString()
         tvName.text = transaction.name
-        tvTotalPrice.text = (transaction.price_buy * amount).toString()
+        tvTotalPrice.text = (transaction.price_sell * amount).toString()
         edtCount.setText("1")
 
         toast("Lấy dữ liệu sản phảm thành công")

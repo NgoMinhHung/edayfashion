@@ -17,6 +17,7 @@ class CartActivity : AppCompatActivity() {
 //    lateinit var adapter: TransactionOrderAdapter
 
     private val adapter = TransactionOrderAdapter()
+    private var sum = 0f;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +58,9 @@ class CartActivity : AppCompatActivity() {
     }
     private fun displayTransactions(transactions: MutableList<AddCartData>) {
         adapter.setTransactionOrder(transactions)
+        for(i in transactions.indices) sum = sum + transactions[i].price
         toast("Lấy dữ liệu danh sách sản phảm thành công")
+        tvTotalCart.text = sum.toString()
     }
     private fun onError(string: String?) {
         toast("Lấy dữ liệu danh sách sản phảm lỗi")
