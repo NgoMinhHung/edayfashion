@@ -10,7 +10,6 @@ class TransactionOrderAdapter: RecyclerView.Adapter<TransactionOrderViewHolder>(
 
     private val transactionsOrder = mutableListOf<AddCartData>()
 
-//    var onItemClick: ((Product) -> Unit) ? = null
 
     fun setTransactionOrder(input: MutableList<AddCartData>){
         transactionsOrder.clear()
@@ -30,9 +29,6 @@ class TransactionOrderAdapter: RecyclerView.Adapter<TransactionOrderViewHolder>(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionOrderViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_transaction_cart, parent, false)
         return TransactionOrderViewHolder(view)
-//            .also {
-//            it.onClick = this.onItemClick
-//        }
     }
 
 }
