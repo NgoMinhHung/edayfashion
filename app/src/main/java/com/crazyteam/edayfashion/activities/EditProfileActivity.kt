@@ -79,7 +79,7 @@ class EditProfileActivity : AppCompatActivity() {
     private fun onUpdateProfileSuccess(updateUserResponse: UpdateUserResponse) {
 
         updateUserResponse.data.let {
-            name = it.name
+            name = it.first_name + " " + it.last_name
             gender = it.sex
             address = it.addr
             phone = it.phone
@@ -101,13 +101,13 @@ class EditProfileActivity : AppCompatActivity() {
         gender = radioButtonMale.isChecked
 
         val updateUserParams = UpdateUserParams(
-            username = name.toString(),
+//            username = name.toString(),
             phone = phone.toString(),
             addr = address.toString(),
             birthDay = "1998-09-12",
             sex = if(gender) 1 else 0,
-            firstname = "Test",
-            lastname = "Update"
+            firstname = name.toString(),
+            lastname = ""
         )
 
         updateProfile(updateUserParams)

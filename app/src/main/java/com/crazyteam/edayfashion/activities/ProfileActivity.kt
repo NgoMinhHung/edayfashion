@@ -71,7 +71,7 @@ class ProfileActivity : AppCompatActivity() {
                 user?.apply {
                     val intent =
                         Intent(this@ProfileActivity, EditProfileActivity::class.java).apply {
-                            putExtra(IntentKeys.UserName, username)
+                            putExtra(IntentKeys.UserName, first_name + " " + last_name)
                             putExtra(IntentKeys.UserGender, sex)
                             putExtra(IntentKeys.UserPhoneNumber, phone)
                             putExtra(IntentKeys.UserImageUrl, imageUrl)
@@ -88,7 +88,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun display(user: User) {
-        tvName.text = user.username
+        tvName.text = user.first_name + " " + user.last_name
         tvGender.text = getString(if (user.sex) R.string.male else R.string.female)
         tvPhone.text =  user.phone
         tvAddress.text = user.addr

@@ -10,7 +10,7 @@ import java.util.*
 interface ITransactionService {
 
     @POST("/eday/order/addCart")
-    fun addCartTransaction(@Body addCartTransactionParams: AddCartTransactionParams): Observable<Response<AddCartTransactionResponse>>
+    fun addCartTransaction(@Header("Cookie") cookie: String, @Body addCartTransactionParams: AddCartTransactionParams): Observable<Response<AddCartTransactionResponse>>
 
     @GET("eday/order/getCartByUser")
     fun getOrderListCartTransaction(@Header("Cookie") cookie: String): Observable<Response<GetOrderListCartTransactionResponse>>

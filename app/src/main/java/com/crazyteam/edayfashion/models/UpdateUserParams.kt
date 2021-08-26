@@ -3,8 +3,8 @@ package com.crazyteam.edayfashion.models
 import com.google.gson.annotations.SerializedName
 
 data class UpdateUserParams(
-    @SerializedName("username")
-    val username: String,
+//    @SerializedName("username")
+//    val username: String,
     @SerializedName("phone")
     val phone: String,
     @SerializedName("addr")
